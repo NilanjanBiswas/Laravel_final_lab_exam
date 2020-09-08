@@ -71,18 +71,18 @@
 					</div>
 					<ul class="nav">
 						<li class="nav-item active">
-							<a href="/admin">
+							<a href="/employee">
 								<p>Dashboard</p>							
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="/admin/users">
+							<a href="/employee/users">
 								<p>All Users</p>
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="icons.html">
-								<p>Register</p>
+							<a href="/employee/register">
+								<p>Register Job</p>
 							</a>
 						</li>
 					</ul>

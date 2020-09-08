@@ -24,12 +24,9 @@
 			<nav class="navbar navbar-header navbar-expand-lg">
 				<div class="container-fluid">
 					
-					<form class="navbar-left navbar-form nav-search mr-md-3" >
-						<div class="input-group" style="position: relative;">
-							<input type="text" id="usersearchid"  placeholder="Search ..." name="usersearch" class="form-control">
-							<div class="resultbox" style="position: absolute; left: 5%; top: 80%;">
-								
-							</div>
+					<form class="navbar-left navbar-form nav-search mr-md-3" action="">
+						<div class="input-group">
+							<input type="text" placeholder="Search ..." class="form-control">
 							<div class="input-group-append">
 								<span class="input-group-text">
 									<i class="la la-search search-icon"></i>
@@ -94,32 +91,45 @@
 			<div class="main-panel">
 				<div class="content">
 					<div class="container-fluid">
-						<h4 class="page-title">Dashboard</h4>
-						<div style="height: 300px;" class="table-responsive my-table table-hover">
-							<table  class="table table-bordered">
-								<thead>
-									<tr>
-										<th>#</th>
-										<th>ID</th>
-										<th>USERNAME</th>
-										<th>EMAIL</th>
-										<th>Action</th>
-									</tr>
-								</thead>
-								<tbody>
-								@foreach($userinfo as $result)
-								<!-- if else condition to check all the admins -->
-									<tr>
-										<th scope="row"></th>
-										<td>{{ $result->id  }}</td>
-										<td>{{ $result->username  }}</td>
-										<td>{{ $result->email  }}</td>
-										<td><a class="btn btn-default" href="/admin/viewprofile/{{$result->username}}">View Information</a></td>
-									</tr>
-									@endforeach
-								</tbody>
-							</table>
-						</div>
+						<h4 class="page-title">Register</h4>
+
+                        <!-- <form method="POST" action="/reg">
+                        <div class="form-group">
+                        <label for="formGroupExampleInput">Name</label>
+                          <input type="text" class="form-control" id="name" placeholder="Enter Name">
+                         </div>
+                         <div class="form-group">
+                          <label for="formGroupExampleInput2">email</label>
+                         <input type="text" class="form-control" id="email" placeholder="Email">
+                         </div>
+                         <div class="form-group">
+                          <label for="formGroupExampleInput2">phone</label>
+                         <input type="text" class="form-control" id="phone" placeholder="phone no">
+                         </div>
+                         <div class="form-group">
+                          <label for="formGroupExampleInput2">Company</label>
+                         <input type="text" class="form-control" id="company" placeholder="Company name">
+                         </div>
+                         <div class="form-group">
+                          <label for="formGroupExampleInput2">Password</label>
+                         <input type="password" class="form-control" id="password">
+                         </div>
+                            </form> -->
+
+                            <form action="/employee/register" method="POST">
+                                <input type="text" class="form-control" placeholder="Enter company" name="company">
+                                <br>
+								<input type="text" class="form-control" placeholder="Enter title" name="title">
+								<br>
+								<input type="text" class="form-control" id="name" placeholder="Enter location" name="location">
+								<br>
+								<input type="text" class="form-control"  placeholder="Enter salary" name="salary">
+								<br>
+                                <input type="submit" value="submit">
+                            </form>
+
+
+
 					</div>
 				</div>
 			</div>
@@ -139,33 +149,4 @@
 <script src="/js/user/plugin/jquery-scrollbar/jquery.scrollbar.min.js"></script>
 <script src="/js/user/ready.min.js"></script>
 <script src="/js/user/demo.js"></script>
-<script>
-	$(document).ready(function(){
-		$('#usersearchid').keyup(function(e){
-				//e.preventDefault()
-				var value = $('#usersearchid').val();
-	$.ajax({
-              url: '/admin/usersearch',
-              type: 'POST',
-              data: {usersearch:value},
-              success: function (response) {
-                console.log(response.user);
-				$('.resultbox').html("");
-				for(let user of response.user){
-
-			   var atag=document.createElement('a')
-							atag.setAttribute('href',"")
-							atag.setAttribute('style',"display:block;")
-							atag.innerText=user.username;
-							$('.resultbox').append(atag)
-				}
-                
-              },
-              error: function (err) {
-                console.log(err);
-              }
-            });
-		});
-	});
-</script>
 </html>
